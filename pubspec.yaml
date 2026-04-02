@@ -1,0 +1,34 @@
+name: aura_music
+description: Aura Music – A modern Flutter music player.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Audio playback
+  just_audio: ^0.9.40
+  audio_session: ^0.1.21
+
+  # Background audio service (lock screen controls)
+  audio_service: ^0.18.15
+
+  # State management
+  provider: ^6.1.2
+
+  # UI / utilities
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
