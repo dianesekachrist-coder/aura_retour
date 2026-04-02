@@ -1,12 +1,22 @@
-plugins {
-    id("com.android.application") version "8.3.2" apply false
-    id("com.android.library") version "8.3.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.23" apply false
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
-// Gradle 8+ modern syntax for build directory
-allprojects {
-    layout.buildDirectory.set(rootProject.layout.buildDirectory.dir(project.name))
+val newBuildDir: Directory =
+    rootProject.layout.buildDirectory
+        .dir("../../build")
+        .get()
+rootProject.layout.buildDirectory.value(newBuildDir)
+
+subprojects {
+    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
+    project.layout.buildDirectory.value(newSubprojectBuildDir)
+}
+subprojects {
+    project.evaluationDependsOn(":app")
 }
 
 tasks.register<Delete>("clean") {
